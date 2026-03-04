@@ -103,17 +103,28 @@ export default function Contact() {
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                 </span>
                 <span className="text-xs font-bold text-green-600 uppercase tracking-wider">
-                  Available for Freelance
+                  เปิดบริการรับงานแล้ว
                 </span>
               </div>
+              <div className="space-y-4 max-w-md">
+                <p className="text-slate-500 text-lg lg:text-xl font-light leading-relaxed">
+                  กำลังมองหา Developer ไปร่วมทีม{" "}
+                  <br className="hidden md:block" />
+                  หรือมีโปรเจกต์ที่ต้องการคำปรึกษา?
+                </p>
 
-              <p className="text-slate-500 text-lg lg:text-xl font-light leading-relaxed max-w-md">
-                กำลังมองหา Developer ไปร่วมทีม หรือมีโปรเจกต์ที่ต้องการคำปรึกษา?
-                <span className="block mt-2 font-semibold text-slate-700">
-                  ยินดีรับงานพัฒนาเว็บไซต์ทุกรูปแบบ
-                </span>
-                พร้อมเปลี่ยนไอเดียของคุณให้เป็นความจริงครับ
-              </p>
+                <p className="text-slate-700 text-lg lg:text-xl font-medium leading-relaxed">
+                  ยินดีรับพัฒนาเว็บไซต์ทุกรูปแบบ <br />
+                  <span className="text-indigo-600 font-semibold">
+                    เปลี่ยนไอเดียของคุณให้เป็นความจริง
+                  </span>
+                </p>
+
+                <p className="text-slate-500 text-base italic border-l-2 border-slate-200 pl-4">
+                  "เปิดโอกาสให้เราได้ร่วมงาน
+                  เพื่อความสำเร็จของคุณและผลงานของเรา"
+                </p>
+              </div>
             </div>
 
             <div className="space-y-6">

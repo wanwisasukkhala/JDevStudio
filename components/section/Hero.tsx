@@ -124,13 +124,20 @@ export default function Hero() {
           </h1>
 
           <div className="max-w-md lg:max-w-lg">
-            <p className="text-base sm:text-lg lg:text-xl text-gray-500 font-medium leading-relaxed border-l-4 border-[#3DB2FF] pl-4 sm:pl-6 text-left">
-              Full-stack Developer <br />
-              <span className="text-sm sm:text-base italic text-gray-400 mt-2 block">
-                เราเป็นนักพัฒนาที่มุ่งมั่นในการสร้างเว็บแอปพลิเคชันที่มีประสิทธิภาพและใช้งานง่าย
-                โดยเน้นการทำงานที่เป็นระบบและออกแบบที่คำนึงถึงผู้ใช้งานเป็นหลัก
-              </span>
-            </p>
+            <div className="border-l-4 border-[#3DB2FF] pl-5 py-1">
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-slate-800 tracking-tight">
+                Full-stack Developer
+              </h2>
+              <p className="mt-3 text-base sm:text-md text-slate-500 font-light leading-relaxed">
+                มุ่งมั่นสร้างสรรค์เว็บแอปพลิเคชันที่{" "}
+                <span className="text-slate-700 font-medium">
+                  มีประสิทธิภาพ
+                </span>{" "}
+                และ{" "}
+                <span className="text-slate-700 font-medium">ใช้งานง่าย </span>
+                ด้วยกระบวนการทำงานที่เป็นระบบและใส่ใจประสบการณ์ผู้ใช้เป็นสำคัญ
+              </p>
+            </div>
           </div>
         </div>
 
