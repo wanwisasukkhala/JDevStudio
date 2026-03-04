@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "daisyui";
 
 :root {
   --background: #ffffff;
@@ -23,4 +24,18 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* src/app/globals.css */
+
+html {
+  /* ทำให้การเลื่อนทุกอย่างในหน้าเว็บนุ่มนวล */
+  scroll-behavior: smooth !important;
+}
+
+/* สำคัญมาก: เมื่อกดเมนู หน้าเว็บจะเลื่อนมาหยุดก่อนถึงตัวหนังสือจริง 80px 
+   เพื่อให้พอดีกับความสูงของ Navbar ที่เป็น Sticky ครับ 
+*/
+section[id], div[id] {
+  scroll-margin-top: 80px;
 }
