@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Prompt, Sarabun , Mitr } from "next/font/google"; // Import ฟอนต์ไทยที่นิยม
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import ScrollToTop from "@/components/ScrollToTop";
+
 
 // เลือกใช้ Prompt สำหรับดีไซน์ที่ดู Modern (แนะนำสำหรับ Hero/About ที่เราทำ)
 const prompt = Prompt({
@@ -38,16 +40,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="th">
-      {/* ใช้ prompt.className เป็นฟอนต์หลักของทั้งหน้าเว็บ */}
-      <body className={`${prompt.className} antialiased selection:bg-[#8CFF3D] selection:text-black`}>
-        <Navbar />
-        
-        {/* คลุมเนื้อหาทั้งหมดเพื่อให้ระยะห่างและสีพื้นหลังลื่นไหล */}
-        <div className="min-h-screen bg-gray-50">
-          {children}
-        </div>
-      </body>
-    </html>
+    <html lang="th" className="scroll-smooth">
+  <body className={`${prompt.className} antialiased selection:bg-[#8CFF3D] selection:text-black`}>
+    <Navbar />
+    <div className="min-h-screen bg-gray-50">
+      {children}
+    </div>
+    <ScrollToTop />
+  </body>
+</html>
   );
 }

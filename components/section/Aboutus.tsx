@@ -1,6 +1,5 @@
 "use client";
 
-
 export default function AboutUs() {
   return (
     <section className="min-h-screen bg-[#0f2136] py-20 px-6 sm:px-10 md:px-20 lg:px-32 font-sans text-white overflow-hidden flex items-center">
@@ -55,12 +54,22 @@ export default function AboutUs() {
           </div>
 
           <div className="flex flex-wrap gap-4 pt-6">
-            <button className="bg-[#72b2f3] text-black px-10 py-4 rounded-full font-bold hover:bg-[#72b2f3] transition-all transform hover:-translate-y-1">
-              Download CV
-            </button>
-            <button className="border-2 border-[#72b2f3] text-[#72b2f3] px-10 py-4 rounded-full font-bold hover:bg-[#72b2f3] hover:text-black transition-all">
-              Hire Me
-            </button>
+            <a
+              href="/File/wanwisa_thai.pdf" // ระบุ Path ของไฟล์ PDF (ควรใส่ไว้ในโฟลเดอร์ public)
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#e5f2fe] text-black px-10 py-4 rounded-full font-bold hover:bg-[#bbe5f1] transition-all transform hover:-translate-y-1 inline-block"
+            >
+              Download CV (Thai)
+            </a>
+            <a
+              href="/File/wanwisa_Eng.pdf" // ระบุ Path ของไฟล์ PDF (ควรใส่ไว้ในโฟลเดอร์ public)
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#72b2f3] text-black px-10 py-4 rounded-full font-bold hover:bg-[#bbe5f1] transition-all transform hover:-translate-y-1 inline-block"
+            >
+              Download CV (English)
+            </a>
           </div>
         </div>
       </div>
