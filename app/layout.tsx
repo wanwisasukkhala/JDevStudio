@@ -27,8 +27,8 @@ const mitr = Mitr({
 });
 
 export const metadata: Metadata = {
-  title: "JDev Studio",
-  description: "พอร์ตโฟลิโอ Full-stack Developer โดย วรรณวิสา สุขขลา",
+  title: "Wanwisa",
+  description: "พอร์ตโฟลิโอ Full-stack Developer โดย วันวิสา สุขคะละ",
   icons: {
     icon: "/Image/icon/icons8-code-94.png",
   },
