@@ -1,29 +1,12 @@
 import type { Metadata } from "next";
-import { Prompt, Sarabun , Mitr } from "next/font/google"; // Import ฟอนต์ไทยที่นิยม
+import { Prompt } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import ScrollToTop from "@/components/ScrollToTop";
+import ClientLayout from "@/components/ClientLayout"; // import ตัวที่เราสร้างตะกี้
 
-
-// เลือกใช้ Prompt สำหรับดีไซน์ที่ดู Modern (แนะนำสำหรับ Hero/About ที่เราทำ)
 const prompt = Prompt({
   subsets: ["thai", "latin"],
   weight: ["300", "400", "500", "600", "700"],
   variable: "--font-prompt",
-});
-
-// (ตัวเลือกสำรอง) หากต้องการความทางการมากขึ้นสามารถใช้ Sarabun ได้
-const sarabun = Sarabun({
-  subsets: ["thai", "latin"],
-  weight: ["400", "700"],
-  variable: "--font-sarabun",
-});
-
-// (ตัวเลือกสำรอง) หากต้องการฟอนต์ที่มีความเป็นทางการมากขึ้นสามารถใช้ Mitr ได้
-const mitr = Mitr({
-  subsets: ["thai", "latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-mitr",
 });
 
 export const metadata: Metadata = {
@@ -41,13 +24,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="th" className="scroll-smooth">
-  <body className={`${prompt.className} antialiased selection:bg-[#8CFF3D] selection:text-black`}>
-    <Navbar />
-    <div className="min-h-screen bg-gray-50">
-      {children}
-    </div>
-    <ScrollToTop />
-  </body>
-</html>
+      <body className={`${prompt.className} antialiased selection:bg-[#8CFF3D] selection:text-black`}>
+        {/* ใช้ ClientLayout จัดการการแสดงผล Loading และ Navbar */}
+        <ClientLayout>
+          {children}
+        </ClientLayout>
+      </body>
+    </html>
   );
 }

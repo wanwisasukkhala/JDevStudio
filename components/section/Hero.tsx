@@ -1,6 +1,8 @@
 "use client";
 
 import React from "react";
+import { TypeAnimation } from "react-type-animation"; // สำหรับพิมพ์ดีด
+import { motion } from "framer-motion"; // สำหรับเลื่อนซ้าย-ขวา
 
 const floatingIcons = [
   {
@@ -50,7 +52,7 @@ const floatingIcons = [
 export default function Hero() {
   return (
     <section className="relative min-h-screen bg-[#F0F7FF] flex items-center justify-center py-10 px-6 sm:px-10 md:px-16 lg:px-24 font-sans text-[#1A4B6E] overflow-hidden">
-      {/* --- Wave Animation Background --- */}
+      {/* --- Wave Animation Background (คงเดิม) --- */}
       <div className="absolute bottom-0 left-0 w-full leading-[0] z-0 pointer-events-none">
         <svg
           className="relative block w-full h-[150px] min-h-[100px] max-h-[150px]"
@@ -99,18 +101,28 @@ export default function Hero() {
       </div>
 
       <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center relative z-10">
-        {/* --- ฝั่งเนื้อหา (Text Content) --- */}
-        <div className="order-2 lg:order-1 flex flex-col items-center lg:items-start text-center lg:text-left">
+        {/* --- ฝั่งเนื้อหา (เลื่อนมาจากซ้าย) --- */}
+        <motion.div
+          initial={{ opacity: 0, x: -100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="order-2 lg:order-1 flex flex-col items-center lg:items-start text-center lg:text-left"
+        >
           <p className="text-lg sm:text-xl lg:text-2xl font-medium mb-4 text-[#3DB2FF] tracking-wide">
             Hi I'm
           </p>
 
-          <div className="mb-6 sm:mb-8">
-            <h2 className="text-5xl sm:text-7xl xl:text-8xl font-extrabold tracking-tighter text-[#1A4B6E] leading-[0.9]">
-              Wanwisa
-            </h2>
-            <h2 className="text-5xl sm:text-7xl xl:text-8xl font-extrabold tracking-tighter text-[#1A4B6E] leading-[0.9] ml-[1ch] sm:ml-[2ch]">
-              Sukkhala
+          {/* ส่วนของชื่อที่ทำ Typing Animation */}
+          <div className="mb-6 sm:mb-8 min-h-[120px] sm:min-h-[160px] lg:min-h-[200px]">
+            <h2 className="text-5xl sm:text-7xl xl:text-8xl font-extrabold tracking-tighter text-[#1A4B6E] leading-[1.1]">
+              <TypeAnimation
+                sequence={["Wanwisa", 1000, "Wanwisa\nSukkhala", 2000, "", 500]}
+                wrapper="span"
+                speed={40}
+                style={{ whiteSpace: "pre-line", display: "inline-block" }}
+                repeat={Infinity}
+              />
             </h2>
           </div>
 
@@ -130,10 +142,17 @@ export default function Hero() {
               </p>
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        {/* --- ฝั่งรูปภาพ (Hero Image) --- */}
-        <div className="order-1 lg:order-2 relative flex justify-center items-center py-10">
+        {/* --- ฝั่งรูปภาพ (เลื่อนมาจากขวา) --- */}
+        <motion.div
+          initial={{ opacity: 0, x: 100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          // แก้ไขบรรทัดนี้:
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="order-2 lg:order-1 flex flex-col items-center lg:items-start text-center lg:text-left"
+        >
           <div className="absolute w-[100%] h-[100%] sm:w-[120%] sm:h-[120%]  rounded-full blur-3xl -z-10 animate-pulse"></div>
 
           <div className="relative z-10 w-full max-w-[260px] sm:max-w-[380px] lg:max-w-[480px]">
@@ -143,7 +162,7 @@ export default function Hero() {
               className="w-full h-auto "
             />
 
-            {/* ไอคอนลอย */}
+            {/* ไอคอนลอย (คงเดิม) */}
             {floatingIcons.map((icon, index) => (
               <div
                 key={index}
@@ -164,7 +183,7 @@ export default function Hero() {
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
 
       <style jsx>{`
@@ -198,7 +217,6 @@ export default function Hero() {
           }
         }
 
-        /* สำหรับหน้าจอมือถือให้คลื่นเล็กลง */
         @media (max-width: 768px) {
           .parallax > use {
             animation-duration: 10s;
