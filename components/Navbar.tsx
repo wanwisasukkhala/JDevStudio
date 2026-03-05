@@ -45,8 +45,8 @@ export default function Navbar() {
                 />
               </div>
               <div className="text-xl md:text-2xl font-bold tracking-tight flex items-center">
-                <span className="text-[#3DB2FF]">JDev</span>
-                <span className="text-slate-900 ml-1">Studio</span>
+                <span className="text-[#3DB2FF]">Wanwisa</span>
+                <span className="text-slate-900 ml-1">Sukkhala</span>
               </div>
             </Link>
           </div>

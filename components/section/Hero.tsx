@@ -114,15 +114,6 @@ export default function Hero() {
             </h2>
           </div>
 
-          <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#1A4B6E]/80 mb-6 sm:mb-10 flex items-center gap-2 sm:gap-3">
-            <span className="text-[#3DB2FF] font-light text-3xl sm:text-4xl">
-              /
-            </span>
-            <span className="text-[#3DB2FF]">JDev</span>
-            {/* ส่วน Studio เป็นสีดำ (Slate-900 จะให้ความรู้สึกพรีเมียมกว่าดำสนิท) */}
-            <span className="text-slate-900 ml-1">Studio</span>
-          </h1>
-
           <div className="max-w-md lg:max-w-lg">
             <div className="border-l-4 border-[#3DB2FF] pl-5 py-1">
               <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-slate-800 tracking-tight">
