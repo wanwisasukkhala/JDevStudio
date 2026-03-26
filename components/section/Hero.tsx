@@ -129,7 +129,7 @@ export default function Hero() {
           <div className="max-w-md lg:max-w-lg">
             <div className="border-l-4 border-[#3DB2FF] pl-5 py-1">
               <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-slate-800 tracking-tight">
-                Web Developer & UXUI design
+                Web Developer or UXUI design
               </h2>
               <p className="mt-3 text-base sm:text-md text-slate-500 font-light leading-relaxed">
                 มุ่งมั่นสร้างสรรค์เว็บแอปพลิเคชันที่{" "}

@@ -32,30 +32,30 @@ export default function AboutUs() {
                 วันวิสา สุขคะละ
               </span>
               หรือที่รู้จักในนาม{" "}
-              <span className="text-white font-semibold">"JDev"</span> นักพัฒนา
-              Full-Stack ที่มีจุดเริ่มต้นที่น่าสนใจจากสายงาน{" "}
+              <span className="text-white font-semibold">"JDev"</span> นักพัฒนา{" "}
               <span className="text-white border-b border-[#3DB2FF]">
-                Quality Assurance (QA)
-              </span>
+                Web Developer & UX/UI design
+              </span>{" "}
+              ที่มีจุดเริ่มต้นที่น่าสนใจจากสายงาน{" "}
+              <span className="text-white">Software Tester</span>
             </p>
 
             {/* ย่อหน้าขยายความ: ทักษะพิเศษ */}
             <p className="text-gray-400 leading-relaxed text-base lg:text-lg">
-              ด้วยพื้นฐานด้าน QA เราจึงมีความเชี่ยวชาญเป็นพิเศษในการวิเคราะห์
-              Requirement และเปลี่ยนโจทย์ธุรกิจให้เป็น{" "}
-              <span className="italic">Test Scenarios</span> ที่แม่นยำ
-              ส่งผลให้งานพัฒนาในฐานะ{" "}
-              <span className="text-white">Full-Stack Developer</span> ของเรา
-              มีความเสถียรและตอบโจทย์ผู้ใช้งานจริงอย่างมีประสิทธิภาพ
-              ไม่ว่าจะเป็นการสร้าง UI ด้วย React
-              หรือการวางโครงสร้างระบบหลังบ้านด้วย Node.js เป็นต้น
-              และจัดการฐานข้อมูลด้วย SQL Server , pgAdmin และ mySQL
+              ด้วยพื้นฐานด้าน <span className="italic text-white">Tester</span>{" "}
+              เราจึงเชี่ยวชาญเป็นพิเศษในการวิเคราะห์ Requirement
+              และเปลี่ยนโจทย์ธุรกิจให้เป็นผลงานที่แม่นยำ ส่งผลให้งานออกแบบ
+              <span className="text-white"> UX/UI </span> และการพัฒนา
+              <span className="text-white"> Web Development </span>
+              ของเรามีความเสถียรและตอบโจทย์ผู้ใช้จริง ไม่ว่าจะเป็นการสร้าง UI
+              ด้วย **React** การวางระบบหลังบ้านด้วย **Node.js**
+              และจัดการฐานข้อมูลทั้ง **SQL Server, pgAdmin และ MySQL**
             </p>
           </div>
 
           <div className="flex flex-wrap gap-4 pt-6">
             <a
-              href="/File/wanwisa_thai.pdf" // ระบุ Path ของไฟล์ PDF (ควรใส่ไว้ในโฟลเดอร์ public)
+              href="/File/wanwisa.skl.pdf" // ระบุ Path ของไฟล์ PDF (ควรใส่ไว้ในโฟลเดอร์ public)
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#e5f2fe] text-black px-10 py-4 rounded-full font-bold hover:bg-[#bbe5f1] transition-all transform hover:-translate-y-1 inline-block"
@@ -63,7 +63,7 @@ export default function AboutUs() {
               Download CV (Thai)
             </a>
             <a
-              href="/File/wanwisa_Eng.pdf" // ระบุ Path ของไฟล์ PDF (ควรใส่ไว้ในโฟลเดอร์ public)
+              href="/File/wanwisa.skl-Eng.pdf" // ระบุ Path ของไฟล์ PDF (ควรใส่ไว้ในโฟลเดอร์ public)
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#72b2f3] text-black px-10 py-4 rounded-full font-bold hover:bg-[#bbe5f1] transition-all transform hover:-translate-y-1 inline-block"

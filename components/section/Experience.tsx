@@ -5,12 +5,12 @@ import React from 'react';
 const experiences = [
   { 
     company: 'THE EXPERTISE CO,LTD.', 
-    role: 'Software Tester & Full Stack Developer', 
+    role: 'Software Tester & Programmer', 
     period: 'ก.ค. 2567 - ปัจจุบัน',
     description: (
       <ul className="list-disc list-inside space-y-1">
         <li><strong>Software Tester (1 ปี):</strong> วิเคราะห์ Requirement เพื่อออกแบบ Prototype, สร้าง Test Case/Scenario, ทดสอบ API ด้วย Postman และตรวจสอบฐานข้อมูลด้วย SQL Server</li>
-        <li><strong>Full Stack Developer (หลังจาก 1 ปี - ปัจจุบัน):</strong> ศึกษาและพัฒนา Web Application ของหน่วยงานภาครัฐจัดทำเตรียมยื่นงาน และทำความสะอาดข้อมูลหน่วยงานรัฐด้วย Python และSupport ผู้ใช้งาน</li>
+        <li><strong>Programmer (หลังจาก 1 ปี - ปัจจุบัน):</strong> ศึกษาและพัฒนา Web Application ของหน่วยงานภาครัฐจัดทำเตรียมยื่นงานด้วย Next.js และทำความสะอาดข้อมูลหน่วยงานรัฐด้วย Python และSupport ผู้ใช้งาน</li>
       </ul>
     )
   },

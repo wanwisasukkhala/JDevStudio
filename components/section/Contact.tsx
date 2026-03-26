@@ -108,13 +108,13 @@ export default function Contact() {
               </div>
               <div className="space-y-4 max-w-md">
                 <p className="text-slate-500 text-lg lg:text-xl font-light leading-relaxed">
-                  กำลังมองหา Developer ไปร่วมทีม{" "}
+                  กำลังมองหา Web Developer or UXUI design ไปร่วมทีม{" "}
                   <br className="hidden md:block" />
                   หรือมีโปรเจกต์ที่ต้องการคำปรึกษา?
                 </p>
 
                 <p className="text-slate-700 text-lg lg:text-xl font-medium leading-relaxed">
-                  ยินดีรับพัฒนาเว็บไซต์ทุกรูปแบบ <br />
+                  ยินดีรับออกแบบพัฒนาเว็บไซต์ทุกรูปแบบ <br />
                   <span className="text-indigo-600 font-semibold">
                     เปลี่ยนไอเดียของคุณให้เป็นความจริง
                   </span>

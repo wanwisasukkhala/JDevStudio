@@ -16,6 +16,7 @@ const skillGroups = [
       { name: "React", icon: "/Image/icon/icons8-react-48.png" },
       { name: "Tailwind", icon: "/Image/icon/icons8-tailwind-css-96.png" },
       { name: "JavaScript", icon: "/Image/icon/icons8-javascript-48.png" },
+      { name: "TypeScript", icon: "/Image/icon/icons8-typescript-96.png" },
       { name: "Next.js", icon: "/Image/icon/icons8-nextjs-96.png" }
     ]
   },
