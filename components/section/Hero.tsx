@@ -157,7 +157,7 @@ export default function Hero() {
 
           <div className="relative z-10 w-full max-w-[260px] sm:max-w-[380px] lg:max-w-[480px]">
             <img
-              src="/Image/bg1.png"
+              src="/Image/01.png"
               alt="Profile"
               className="w-full h-auto "
             />
