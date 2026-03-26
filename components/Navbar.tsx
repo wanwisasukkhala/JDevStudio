@@ -6,10 +6,10 @@ import Image from 'next/image';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("home"); // ตั้งค่าเริ่มต้นที่ home
+  const [activeSection, setActiveSection] = useState("home"); // เริ่มต้นที่ home
 
   const menuItems = [
-    { name: "หน้าแรก", href: "#home", id: "home" }, // เปลี่ยนจาก / เป็น #home
+    { name: "หน้าแรก", href: "#home", id: "home" },
     { name: "เกี่ยวกับเรา", href: "#about", id: "about" },
     { name: "ประวัติการศึกษา", href: "#education", id: "education" },
     { name: "ประวัติการทำงาน", href: "#experience", id: "experience" },
@@ -18,16 +18,18 @@ export default function Navbar() {
     { name: "ติดต่อเรา", href: "#contact", id: "contact" },
   ];
 
-  // Logic ตรวจจับ Scroll
   useEffect(() => {
     const observerOptions = {
       root: null,
-      rootMargin: "-25% 0px -65% 0px", // ตรวจจับเมื่อ Section อยู่แถวๆ กลางจอ
+      // rootMargin: "บน ขวา ล่าง ซ้าย" 
+      // ปรับลบค่าล่างออกเยอะๆ เพื่อให้มัน Focus แค่ส่วนบนของจอ
+      rootMargin: "-10% 0px -85% 0px", 
       threshold: 0,
     };
 
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
+        // ถ้ากำลังแสดงผล (Intersecting) ให้จำค่า ID ไว้
         if (entry.isIntersecting) {
           setActiveSection(entry.target.id);
         }
@@ -41,7 +43,18 @@ export default function Navbar() {
       if (element) observer.observe(element);
     });
 
-    return () => observer.disconnect();
+    // กรณีพิเศษ: ถ้า Scroll อยู่บนสุด (Y=0) ให้ Set เป็น home แน่นอน
+    const handleScroll = () => {
+      if (window.scrollY < 100) {
+        setActiveSection("home");
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   useEffect(() => {
@@ -81,9 +94,9 @@ export default function Navbar() {
                 }`}
               >
                 {item.name}
-                {/* เส้นใต้เมนู (Animated Underline) */}
-                <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-[#3DB2FF] transition-transform duration-300 origin-left ${
-                  activeSection === item.id ? "scale-x-100" : "scale-x-0"
+                {/* เส้นใต้เมนู */}
+                <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-[#3DB2FF] transition-all duration-300 ${
+                  activeSection === item.id ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1"
                 }`} />
               </Link>
             ))}
@@ -103,9 +116,9 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile Button */}
-          <div className="lg:hidden flex items-center">
-            <button onClick={() => setIsOpen(!isOpen)} className="p-2 text-gray-600 focus:outline-none">
+          {/* Mobile Menu Button */}
+          <div className="lg:hidden">
+            <button onClick={() => setIsOpen(!isOpen)} className="p-2 text-gray-600">
               <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 {isOpen ? <path d="M6 18L18 6M6 6l12 12" /> : <path d="M4 6h16M4 12h16m-7 6h7" />}
               </svg>
@@ -114,17 +127,17 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      <div className={`lg:hidden overflow-hidden transition-all duration-300 bg-white ${isOpen ? "max-h-[500px]" : "max-h-0"}`}>
-        <div className="px-4 pt-2 pb-6 space-y-1 shadow-inner">
+      {/* Mobile Menu Overlay */}
+      <div className={`lg:hidden transition-all duration-300 bg-white ${isOpen ? "max-h-screen" : "max-h-0 overflow-hidden"}`}>
+        <div className="px-4 pt-2 pb-6 space-y-1">
           {menuItems.map((item) => (
             <Link
               key={item.name}
               href={item.href}
               onClick={() => setIsOpen(false)}
-              className={`block px-4 py-3 text-base font-medium rounded-xl transition-colors ${
+              className={`block px-4 py-3 text-base font-medium rounded-xl ${
                 item.id === "contact"
-                ? "text-white bg-[#3DB2FF] mt-4 text-center"
+                ? "text-white bg-[#3DB2FF] text-center"
                 : activeSection === item.id 
                   ? "text-[#3DB2FF] bg-blue-50" 
                   : "text-gray-600"
