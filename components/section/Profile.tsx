@@ -1,66 +1,61 @@
 "use client";
 
 import React, { useState } from 'react';
-import { ExternalLink, Github, Code2, Briefcase, Layout, Monitor } from 'lucide-react';
+// 1. นำเข้าไอคอน Figma เพิ่มเติม
+import { ExternalLink, Github, Code2, Briefcase, Layout, Monitor, Figma } from 'lucide-react';
 
 const projects = [
-  // --- หมวดหมู่: ระบบ (System) ---
-  // {
-  //   title: "E-Commerce Full-Stack Platform",
-  //   category: "ระบบ (System)",
-  //   image: "/Image/project-ecommerce.jpg",
-  //   description: "ระบบซื้อขายออนไลน์เต็มรูปแบบ พร้อมระบบชำระเงินและจัดการคลังสินค้า พัฒนาด้วยความปลอดภัยระดับสูง",
-  //   tools: ["Next.js", "PostgreSQL", "Tailwind", "Stripe"],
-  //   github: "#",
-  //   demo: "#"
-  // },
-  // {
-  //   title: "QA Automation Dashboard",
-  //   category: "ระบบ (System)",
-  //   image: "/Image/project-qa.jpg",
-  //   description: "เครื่องมือ Dashboard สำหรับแสดงผลการทดสอบ Automate Test และรายงาน Bug สำหรับทีมพัฒนา",
-  //   tools: ["React", "Node.js", "Chart.js", "Jest"],
-  //   github: "#",
-  //   demo: "#"
-  // },
-  // --- หมวดหมู่: Landing Page ---
-  // {
-  //   title: "Modern SaaS Landing Page",
-  //   category: "Landing Page",
-  //   image: "/Image/project-saas.jpg",
-  //   description: "หน้าเว็บไซต์บริการซอฟต์แวร์ที่เน้นความเร็ว (Core Web Vitals) และ Conversion Rate Optimization",
-  //   tools: ["Framer Motion", "React", "Tailwind"],
-  //   github: "#",
-  //   demo: "#"
-  // },
-  // {
-  //   title: "Corporate Business Website",
-  //   category: "Landing Page",
-  //   image: "/Image/project-biz.jpg",
-  //   description: "เว็บไซต์บริษัทที่เน้นความน่าเชื่อถือและการแสดงผลที่ลื่นไหลในทุกอุปกรณ์ (Responsive Design)",
-  //   tools: ["HTML", "SCSS", "JavaScript"],
-  //   github: "#",
-  //   demo: "#"
-  // },
+
   // --- หมวดหมู่: ผลงานตอนทำงานประจำ (Professional Work) ---
   {
-    title: "วิเคราะห์ออกแบบ Prototype และสร้าง Test Scenario ของระบบภายในหน่วยงานภาครัฐ",
+    title: "Tester ระบบตรวจสารต้องห้ามทางการกีฬา",
     category: "ผลงานตอนทำงานประจำ",
-    image: "/Image/1.png",
-    description: "ระบบงานต่างๆ และ Support ผู้ใช้งาน",
-    tools: ["Next.js", "SQL Server", "Postman"],
-    github: null, // งานประจำอาจจะไม่มี Link Github
-    demo: "#"
+    image: "/Image/STAM.png",
+    description: "วิเคราะห์ออกแบบ Prototype และสร้าง Test Scenario ทำการทดสอบ และ Support ผู้ใช้งาน ของระบบภายในหน่วยงานการท่องการกีฬาแห่งประเทศไทย",
+    tools: ["Miro", "SQL Server","excel"],
+    github: null, 
+    demo: "" 
+  },
+   {
+    title: "Support ระบบสมัครสอบผู้นำร่อง หน่วยงานกรมเจ้าท่า",
+    category: "ผลงานตอนทำงานประจำ",
+    image: "/Image/SWMD.png",
+    description: "Support ผู้ใช้งานระบบสมัครสอบนำร่องของหน่วยงานกรมเจ้าท่า ทำการแก้ไขปัญหาที่เกิดขึ้นจากการใช้งานจริง และปรับปรุงระบบให้มีประสิทธิภาพมากขึ้น",
+    tools: [ "SQL Server","excel","postman","vpn"],
+    github: null, 
+    demo: "" 
   },
   {
-    title: "ระบบบันทึกเวลาเข้า-ออกงานออนไลน์ (ฝึกงาน)",
+    title: "Clean Data หน่วยงานสถิติแห่งชาติ",
     category: "ผลงานตอนทำงานประจำ",
-    image: "/Image/2.png",
-    description: "ระบบบันทึกเวลาเข้า-ออกงานออนไลน์ของพนักงาน ",
-    tools: ["C#.net", "SQL Server", "Bootstrap"],
+    image: "/Image/Cleandata.png",
+    description: "ทำความสะอาดข้อมูลการคลีนให้ข้อมูลแสดงออกมาดีที่สุด สวยที่สุดการนำข้อมูลไปใช้งานต่อ สำหรับหน่วยงานสถิติแห่งชาติ ",
+    tools: ["Python", "Pandas", "pgAdmin","MongoDB Compass","oracle 19c"],
     github: null,
-    demo: "#"
-  }
+    // 2. ใส่ลิงก์ Figma ของคุณที่นี่ได้เลยครับ 👇
+    demo: "" 
+  },
+  {
+    title: "ออกแบบ Prototype เตรียมยื่นงาน แต่งานถูกยกเลิกไปซะก่อนครับ",
+    category: "ผลงานตอนทำงานประจำ",
+    image: "/Image/OAP.png",
+    description: "ออกแบบ Prototype ระบบปรมาณู",
+    tools: ["Figma"],
+    github: null,
+    // 2. ใส่ลิงก์ Figma ของคุณที่นี่ได้เลยครับ 👇
+    demo: "https://www.figma.com/design/fqyk7IGKDhFeQ61HM8XiGj/%E0%B8%A3%E0%B8%B0%E0%B8%9A%E0%B8%9A%E0%B8%9B%E0%B8%A3%E0%B8%A1%E0%B8%B2%E0%B8%93%E0%B8%B9-OAP2026?node-id=45-6&t=1tTMPTJDCyqYh1SG-1" 
+  },
+  {
+    title: "ออกแบบ Prototype เตรียมยื่นงาน แต่งานถูกยกเลิกไปซะก่อนครับ",
+    category: "ผลงานตอนทำงานประจำ",
+    image: "/Image/KAIHUB.png",
+    description: "แบบฟอร์มไก่ชน",
+    tools: ["Figma"],
+    github: null,
+    // 2. ใส่ลิงก์ Figma ของคุณที่นี่ได้เลยครับ 👇
+    demo: "https://www.figma.com/design/ONubYCFYomfSCYztqVEXEn/%E0%B9%81%E0%B8%9E%E0%B8%A5%E0%B8%95%E0%B8%9F%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%A1%E0%B9%84%E0%B8%81%E0%B9%88%E0%B8%8A%E0%B8%99?node-id=0-1&t=QPnF694zlg6KuPD2-1" 
+  },
+
 ];
 
 const categories = [
@@ -92,7 +87,7 @@ export default function Portfolio() {
           <p className="text-gray-400 text-lg">รวบรวมผลงานการพัฒนาซอฟต์แวร์และการออกแบบเว็บไซต์</p>
         </div>
 
-        {/* Filter Buttons - สไตล์ Modern Capsule */}
+        {/* Filter Buttons */}
         <div className="flex flex-wrap justify-center gap-4 mb-20">
           {categories.map((cat) => (
             <button
@@ -128,13 +123,27 @@ export default function Portfolio() {
                 {/* Image Overlay */}
                 <div className="absolute inset-0 bg-[#0f2136]/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-6">
                   {project.github && (
-                    <a href={project.github} className="p-4 bg-white/10 backdrop-blur-md rounded-full text-white hover:bg-[#72b2f3] hover:text-[#0f2136] transition-all transform hover:-translate-y-1">
+                    <a 
+                      href={project.github} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="p-4 bg-white/10 backdrop-blur-md rounded-full text-white hover:bg-[#72b2f3] hover:text-[#0f2136] transition-all transform hover:-translate-y-1"
+                    >
                       <Github size={24} />
                     </a>
                   )}
-                  <a href={project.demo} className="p-4 bg-white/10 backdrop-blur-md rounded-full text-white hover:bg-[#72b2f3] hover:text-[#0f2136] transition-all transform hover:-translate-y-1">
-                    <ExternalLink size={24} />
-                  </a>
+                  {project.demo && (
+                    <a 
+                      href={project.demo} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="p-4 bg-white/10 backdrop-blur-md rounded-full text-white hover:bg-[#72b2f3] hover:text-[#0f2136] transition-all transform hover:-translate-y-1"
+                      title={project.demo.includes('figma.com') ? "เปิดดู Figma Prototype" : "เยี่ยมชมเว็บไซต์"}
+                    >
+                      {/* 3. เช็คเงื่อนไข: ถ้าเป็นลิงก์ figma ให้แสดงไอคอน figma ถ้าไม่ใช่ให้แสดงไอคอนลิงก์ภายนอกปกติ */}
+                      {project.demo.includes('figma.com') ? <Figma size={24} /> : <ExternalLink size={24} />}
+                    </a>
+                  )}
                 </div>
               </div>
 
@@ -170,7 +179,7 @@ export default function Portfolio() {
           ))}
         </div>
 
-        {/* empty state if no projects */}
+        {/* Empty State */}
         {filteredProjects.length === 0 && (
           <div className="text-center py-20 text-gray-500">
              <p className="text-xl">ยังไม่มีรายการผลงานในหมวดหมู่นี้</p>
