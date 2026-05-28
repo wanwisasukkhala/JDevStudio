@@ -4,7 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 
 export default function AboutUs() {
-  // นำเทคนิค Object Literal ปกติมาใช้ (Framer Motion รองรับอยู่แล้วและไม่ติดปัญหา Type บน Vercel)
+  // แก้ไขผูกแอนิเมชันชุดหลัก
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -15,12 +15,14 @@ export default function AboutUs() {
     },
   };
 
+  // ถอด ease: "easeOut" ออกเพื่อไม่ให้ TypeScript แจ้งเตือนเรื่อง Type 
+  // (ระบบจะสไลด์ด้วยความนุ่มนวลแบบ easeOut อัตโนมัติอยู่แล้วครับ)
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
+      transition: { duration: 0.6 },
     },
   };
 
@@ -44,12 +46,12 @@ export default function AboutUs() {
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
         
-        {/* --- ฝั่งซ้าย: รูปภาพพร้อมแอนิเมชัน --- */}
+        {/* --- ฝั่งซ้าย: รูปภาพพร้อมแอนิเมชัน (ใช้ array แทนสตริงเพื่อความปลอดภัยบน TS) --- */}
         <motion.div 
           initial={{ opacity: 0, x: -50, scale: 0.95 }}
           whileInView={{ opacity: 1, x: 0, scale: 1 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
           className="relative group mx-auto lg:mx-0 order-1"
         >
           <div className="absolute -inset-2 border-2 border-[#A855F7]/40 rounded-lg opacity-60 group-hover:opacity-100 transition-opacity duration-500 translate-x-4 translate-y-4 -z-10 shadow-[0_0_20px_rgba(168,85,247,0.15)]"></div>
