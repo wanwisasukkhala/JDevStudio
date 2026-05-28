@@ -1,111 +1,177 @@
 "use client";
 
-import React from 'react';
-import { GraduationCap } from 'lucide-react';
+import React from "react";
+import { GraduationCap, Briefcase } from "lucide-react";
+import { motion } from "framer-motion";
 
+// ข้อมูลการศึกษา
 const educationData = [
-  { 
-    university: 'มหาวิทยาลัยเทคโนโลยีราชมงคลสุวรรณภูมิ ศูนย์สุพรรณบุรี', 
-    degree: 'ปริญญาตรี วิทยาศาสตรบัณฑิต (เทคโนโลยีธุรกิจดิจิทัล) GPA 3.43', 
-    period: '2565 - 2567',
-    description: 'มุ่งเน้นการศึกษาด้านการพัฒนาซอฟต์แวร์, โครงสร้างข้อมูล, และการจัดการฐานข้อมูล โดยได้รับรางวัลเพชรบริหาร ทางมหาวิทยาลัย',
-    image: '/Image/IMG_1245.JPG'
+  {
+    period: "2022 - 2024",
+    degree: "B.Sc. in Digital Business Technology",
+    institution: "Rajamangala University of Technology Suvarnabhumi",
+    description: "Graduated with GPA 3.43. Focused on software development, data structures, database management systems, and received the university's Diamond Business Award.",
   },
-  { 
-    university: 'วิทยาลัยเทคโนโลยีสหวิทย์บริหารธุรกิจ', 
-    degree: 'ระดับประกาศนียบัตรวิชาชีพชั้นสูง (สาขาเทคโนโลยีสารสนเทศ)', 
-    period: '2561 - 2563',
-    description: 'เน้นปูพื้นฐานด้านตรรกศาสตร์และคณิตศาสตร์ ซึ่งเป็นรากฐานสำคัญในการก้าวเข้าสู่สายงานนักพัฒนาซอฟต์แวร์',
-    image: '/Image/logo_sba.png'
+  {
+    period: "2018 - 2020",
+    degree: "High Vocational Certificate in Information Technology",
+    institution: "Sahawith Business Technology College",
+    description: "Built strong foundational roots in computer logic, networking principles, and mathematics, establishing a solid baseline for a software development career.",
   },
 ];
 
-export default function Education() {
+// ข้อมูลประสบการณ์การทำงาน
+const experienceData = [
+  {
+    period: "July 2024 - May 2026",
+    role: "Programmer / Full-Stack Developer",
+    company: "Government Web Application & JDev Studio",
+    description: "Developing robust web applications using React, Next.js, and Node.js. Executing data engineering pipelines, data cleaning, and regional mapping using Python scripts.",
+  },
+  {
+    period: "November 2023 - March 2024",
+    role: "Web Developer",
+    company: "Online Attendance System Project",
+    description: "Designed and developed an Online Attendance System leveraging ASP.NET Web Forms and SQL Server database, optimizing workflow tracking structures.",
+  },
+  {
+    period: "November 2022 - October 2023", // อัปเดตช่วงเวลา QA เป็นสากลและถูกต้องตามประวัติจริง
+    role: "Software Quality Assurance (QA) / Tester",
+    company: "Software Testing Services",
+    description: "Conducted requirement analysis, created rigorous test scenarios, executed test cases, and specialized in API testing utilizing Postman to ensure stable software integration.",
+  },
+];
+
+export default function Qualifications() {
   return (
-    <section className="min-h-screen bg-[#0f2136] py-24 px-6 sm:px-10 md:px-20 lg:px-32 font-sans text-white overflow-hidden flex flex-col justify-center">
+    <section className="relative min-h-screen bg-[#08020f] py-20 px-6 sm:px-10 md:px-16 lg:px-24 font-sans text-white overflow-hidden flex items-center">
       
-      {/* ส่วนหัวข้อ (Header) */}
-      <div className="max-w-7xl mx-auto w-full mb-16 lg:mb-24">
-        <div className="flex items-center gap-4">
-          <span className="w-12 h-[2px] bg-[#72b2f3]"></span>
-          <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight uppercase">
-            ประวัติ <span className="text-[#72b2f3]">การศึกษา</span>
+      {/* --- Background Grid Pattern (ธีมตารางม่วงเข้มให้เข้าเซ็ตกับหน้าอื่นๆ) --- */}
+      <div 
+        className="absolute inset-0 z-0 opacity-20 pointer-events-none" 
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, #3B1556 1px, transparent 1px),
+            linear-gradient(to bottom, #3B1556 1px, transparent 1px)
+          `,
+          backgroundSize: '40px 40px'
+        }}
+      />
+
+      {/* แสงออร่าเรืองแสง (Glow Effect) ซ่อนอยู่ด้านหลังพื้นหลังเพื่อเพิ่มความสมบูรณ์แบบของ Dark Theme */}
+      <div className="absolute top-1/4 left-10 w-80 h-80 rounded-full bg-purple-600/5 blur-[120px] pointer-events-none -z-10" />
+      <div className="absolute bottom-1/4 right-10 w-80 h-80 rounded-full bg-pink-600/5 blur-[120px] pointer-events-none -z-10" />
+
+      <div className="max-w-7xl mx-auto w-full relative z-10">
+        
+        {/* --- ส่วนหัวข้อกลางหน้าจอ (Qualifications / Awesome Journey) --- */}
+        <div className="text-center mb-16 md:mb-24">
+          <span className="text-xs sm:text-sm font-semibold text-purple-400 tracking-[0.25em] uppercase block mb-2">
+            QUALIFICATIONS
+          </span>
+          <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-white">
+            Awesome{" "}
+            <span className="bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
+              Journey
+            </span>
           </h2>
+          <div className="w-16 h-[3px] bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mx-auto mt-4" />
         </div>
-      </div>
 
-      {/* รายการประวัติการศึกษา */}
-      <div className="max-w-7xl mx-auto w-full space-y-32">
-        {educationData.map((edu, index) => {
-          // เช็คว่าเป็นโลโก้ SBA หรือไม่ เพื่อปรับเป็นวงกลม
-          const isCircleImage = edu.image === '/Image/logo_sba.png';
+        {/* --- Layout Grid 2 คอลัมน์ใหญ่ขนานกัน --- */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           
-          return (
-            <div 
-              key={index} 
-              className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
-            >
-              {/* ฝั่งซ้าย: เนื้อหาข้อความ */}
-              <div className="space-y-8 order-2 lg:order-1">
-                <div className="space-y-4">
-                  <span className="inline-block text-[#72b2f3] font-bold text-sm tracking-[0.2em] border-b-2 border-[#72b2f3]/30 pb-1">
-                    {edu.period}
-                  </span>
-                  
-                  <h3 className="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
-                    {edu.degree}
-                  </h3>
-                  
-                  <p className="text-[#3DB2FF] font-bold text-xl lg:text-2xl">
-                    {edu.university}
-                  </p>
-                </div>
-
-                <div className="relative">
-                  {/* ตกแต่งเส้นแนวตั้งข้างข้อความ */}
-                  <div className="absolute left-0 top-0 w-[2px] h-full bg-[#72b2f3]/20 rounded-full"></div>
-                  <p className="text-gray-400 leading-relaxed text-lg lg:text-xl pl-6 font-light">
-                    {edu.description}
-                  </p>
-                </div>
-
-                <div className="pt-4 flex items-center gap-2 text-gray-500">
-                  <GraduationCap size={20} className="text-[#72b2f3]" />
-                  <span className="text-sm uppercase tracking-widest">Academic Background</span>
-                </div>
+          {/* ================= ฝั่งซ้าย: EDUCATION HISTORY ================= */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="space-y-8"
+          >
+            {/* Column Header */}
+            <div className="flex items-center gap-3 pb-4 border-b border-purple-950/50">
+              <div className="p-2.5 bg-[#160D24]/80 text-purple-400 rounded-xl border border-purple-900/40 shadow-[0_0_15px_rgba(168,85,247,0.1)]">
+                <GraduationCap size={22} />
               </div>
-
-              {/* ฝั่งขวา: รูปภาพพร้อมกรอบเยื้อง */}
-              <div className="relative group mx-auto lg:ml-auto lg:mr-0 order-1 lg:order-2">
-                {/* กรอบเยื้องด้านหลัง - ปรับเป็นวงกลมตามรูปภาพ */}
-                <div className={`absolute -inset-2 border-2 border-[#72b2f3] opacity-40 group-hover:opacity-100 transition-opacity duration-500 translate-x-6 translate-y-6 -z-10 
-                  ${isCircleImage ? 'rounded-full' : 'rounded-lg'}`}>
-                </div>
-                
-                {/* คอนเทนเนอร์รูปภาพ */}
-                <div className={`relative overflow-hidden shadow-2xl transition-all duration-500
-                  ${isCircleImage 
-                    ? 'w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] rounded-full bg-white flex items-center justify-center p-8' 
-                    : 'w-[280px] h-[330px] sm:w-[400px] sm:h-[480px] rounded-lg bg-[#111]'
-                  }`}>
-                  <img
-                    src={edu.image}
-                    alt={edu.university}
-                    className={`transition-transform duration-700 group-hover:scale-110
-                      ${isCircleImage ? 'w-full h-full object-contain' : 'w-full h-full object-cover'}`}
-                    onError={(e) => {
-                      e.currentTarget.src = "https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1000&auto=format&fit=crop";
-                    }}
-                  />
-                  {/* Overlay จางๆ (ไม่แสดงถ้าเป็นรูปวงกลมพื้นหลังขาว) */}
-                  {!isCircleImage && (
-                    <div className="absolute inset-0 bg-blue-900/10 group-hover:bg-transparent transition-colors"></div>
-                  )}
-                </div>
-              </div>
+              <h3 className="text-xl sm:text-2xl font-bold text-white tracking-wide">
+                Education History
+              </h3>
             </div>
-          );
-        })}
+
+            {/* Timeline Wrapper */}
+            <div className="relative pl-6 space-y-10 border-l border-purple-900/30">
+              {educationData.map((edu, idx) => (
+                <div key={idx} className="relative group">
+                  {/* จุดวงกลม Indicator บนเส้น Timeline */}
+                  <div className="absolute -left-[31px] top-1.5 w-3.5 h-3.5 rounded-full border-2 border-purple-500 bg-[#0B0314] group-hover:bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.4)] group-hover:scale-110 transition-all duration-300" />
+                  
+                  {/* เนื้อหาประวัติ */}
+                  <div className="space-y-1.5 text-left">
+                    <span className="text-xs font-bold text-purple-400 tracking-wider uppercase block">
+                      {edu.period}
+                    </span>
+                    <h4 className="text-lg sm:text-xl font-bold text-white leading-snug group-hover:text-purple-300 transition-colors">
+                      {edu.degree}
+                    </h4>
+                    <p className="text-sm font-medium text-slate-300">
+                      {edu.institution}
+                    </p>
+                    <p className="text-sm text-slate-400 font-light leading-relaxed text-justify pt-1">
+                      {edu.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* ================= ฝั่งขวา: PROFESSIONAL EXPERIENCE ================= */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="space-y-8"
+          >
+            {/* Column Header */}
+            <div className="flex items-center gap-3 pb-4 border-b border-purple-950/50">
+              <div className="p-2.5 bg-[#160D24]/80 text-purple-400 rounded-xl border border-purple-900/40 shadow-[0_0_15px_rgba(168,85,247,0.1)]">
+                <Briefcase size={22} />
+              </div>
+              <h3 className="text-xl sm:text-2xl font-bold text-white tracking-wide">
+                Professional Experience
+              </h3>
+            </div>
+
+            {/* Timeline Wrapper */}
+            <div className="relative pl-6 space-y-10 border-l border-purple-900/30">
+              {experienceData.map((exp, idx) => (
+                <div key={idx} className="relative group">
+                  {/* จุดวงกลม Indicator บนเส้น Timeline */}
+                  <div className="absolute -left-[31px] top-1.5 w-3.5 h-3.5 rounded-full border-2 border-purple-500 bg-[#0B0314] group-hover:bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.4)] group-hover:scale-110 transition-all duration-300" />
+                  
+                  {/* เนื้อหาประวัติการทำงาน */}
+                  <div className="space-y-1.5 text-left">
+                    <span className="text-xs font-bold text-purple-400 tracking-wider uppercase block">
+                      {exp.period}
+                    </span>
+                    <h4 className="text-lg sm:text-xl font-bold text-white leading-snug group-hover:text-purple-300 transition-colors">
+                      {exp.role}
+                    </h4>
+                    <p className="text-sm font-medium text-slate-300">
+                      {exp.company}
+                    </p>
+                    <p className="text-sm text-slate-400 font-light leading-relaxed text-justify pt-1">
+                      {exp.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+        </div>
       </div>
     </section>
   );

@@ -10,7 +10,7 @@ const prompt = Prompt({
 });
 
 export const metadata: Metadata = {
-  title: "Wanwisa",
+  title: "Wanwisa.skl",
   description: "พอร์ตโฟลิโอ Full-stack Developer โดย วันวิสา สุขคะละ",
   icons: {
     icon: "/Image/icon/icons8-code-94.png",

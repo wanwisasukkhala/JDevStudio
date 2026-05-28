@@ -1,191 +1,153 @@
 "use client";
 
 import React, { useState } from 'react';
-// 1. นำเข้าไอคอน Figma เพิ่มเติม
-import { ExternalLink, Github, Code2, Briefcase, Layout, Monitor, Figma } from 'lucide-react';
-
-const projects = [
-
-  // --- หมวดหมู่: ผลงานตอนทำงานประจำ (Professional Work) ---
-  {
-    title: "Tester ระบบตรวจสารต้องห้ามทางการกีฬา",
-    category: "ผลงานตอนทำงานประจำ",
-    image: "/Image/STAM.png",
-    description: "วิเคราะห์ออกแบบ Prototype และสร้าง Test Scenario ทำการทดสอบ และ Support ผู้ใช้งาน ของระบบภายในหน่วยงานการท่องการกีฬาแห่งประเทศไทย",
-    tools: ["Miro", "SQL Server","excel"],
-    github: null, 
-    demo: "" 
-  },
-   {
-    title: "Support ระบบสมัครสอบผู้นำร่อง หน่วยงานกรมเจ้าท่า",
-    category: "ผลงานตอนทำงานประจำ",
-    image: "/Image/SWMD.png",
-    description: "Support ผู้ใช้งานระบบสมัครสอบนำร่องของหน่วยงานกรมเจ้าท่า ทำการแก้ไขปัญหาที่เกิดขึ้นจากการใช้งานจริง และปรับปรุงระบบให้มีประสิทธิภาพมากขึ้น",
-    tools: [ "SQL Server","excel","postman","vpn"],
-    github: null, 
-    demo: "" 
-  },
-  {
-    title: "Clean Data หน่วยงานสถิติแห่งชาติ",
-    category: "ผลงานตอนทำงานประจำ",
-    image: "/Image/Cleandata.png",
-    description: "ทำความสะอาดข้อมูลการคลีนให้ข้อมูลแสดงออกมาดีที่สุด สวยที่สุดการนำข้อมูลไปใช้งานต่อ สำหรับหน่วยงานสถิติแห่งชาติ ",
-    tools: ["Python", "Pandas", "pgAdmin","MongoDB Compass","oracle 19c"],
-    github: null,
-    // 2. ใส่ลิงก์ Figma ของคุณที่นี่ได้เลยครับ 👇
-    demo: "" 
-  },
-  {
-    title: "ออกแบบ Prototype เตรียมยื่นงาน แต่งานถูกยกเลิกไปซะก่อนครับ",
-    category: "ผลงานตอนทำงานประจำ",
-    image: "/Image/OAP.png",
-    description: "ออกแบบ Prototype ระบบปรมาณู",
-    tools: ["Figma"],
-    github: null,
-    // 2. ใส่ลิงก์ Figma ของคุณที่นี่ได้เลยครับ 👇
-    demo: "https://www.figma.com/design/fqyk7IGKDhFeQ61HM8XiGj/%E0%B8%A3%E0%B8%B0%E0%B8%9A%E0%B8%9A%E0%B8%9B%E0%B8%A3%E0%B8%A1%E0%B8%B2%E0%B8%93%E0%B8%B9-OAP2026?node-id=45-6&t=1tTMPTJDCyqYh1SG-1" 
-  },
-  {
-    title: "ออกแบบ Prototype เตรียมยื่นงาน แต่งานถูกยกเลิกไปซะก่อนครับ",
-    category: "ผลงานตอนทำงานประจำ",
-    image: "/Image/KAIHUB.png",
-    description: "แบบฟอร์มไก่ชน",
-    tools: ["Figma"],
-    github: null,
-    // 2. ใส่ลิงก์ Figma ของคุณที่นี่ได้เลยครับ 👇
-    demo: "https://www.figma.com/design/ONubYCFYomfSCYztqVEXEn/%E0%B9%81%E0%B8%9E%E0%B8%A5%E0%B8%95%E0%B8%9F%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%A1%E0%B9%84%E0%B8%81%E0%B9%88%E0%B8%8A%E0%B8%99?node-id=0-1&t=QPnF694zlg6KuPD2-1" 
-  },
-
-];
+import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ExternalLink, Code2, Briefcase, Layout, Monitor, Figma, ChevronDown, ChevronUp, Info, UserCheck } from 'lucide-react';
+import { projects } from '../data/projects'; // ดึงข้อมูลโปรเจกต์จากไฟล์กลาง
 
 const categories = [
   { name: "All", icon: <Code2 size={16} /> },
   { name: "Landing Page", icon: <Layout size={16} /> },
-  { name: "ระบบ (System)", icon: <Monitor size={16} /> },
-  { name: "ผลงานตอนทำงานประจำ", icon: <Briefcase size={16} /> }
+  { name: "System", icon: <Monitor size={16} /> },
+  { name: "UI/UX", icon: <Briefcase size={16} /> },
+  { name: "Full-Time", icon: <Briefcase size={16} /> },
+  { name: "Freelance", icon: <UserCheck size={16} /> }
 ];
 
 export default function Portfolio() {
   const [filter, setFilter] = useState("All");
+  const [showAll, setShowAll] = useState(false);
 
   const filteredProjects = filter === "All" 
     ? projects 
-    : projects.filter(p => p.category === filter);
+    : projects.filter(p => p.category === filter || p.type === filter);
+
+  const displayedProjects = showAll ? filteredProjects : filteredProjects.slice(0, 3);
+
+  const handleFilterChange = (catName: string) => {
+    setFilter(catName);
+    setShowAll(false);
+  };
 
   return (
-    <section className="py-24 bg-[#0f2136] font-sans overflow-hidden text-white">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-24 bg-[#08020f] font-sans overflow-hidden text-white relative">
+      <div className="absolute inset-0 z-0 opacity-10 pointer-events-none" style={{ backgroundImage: `linear-gradient(to right, #4c1d95 1px, transparent 1px), linear-gradient(to bottom, #4c1d95 1px, transparent 1px)`, backgroundSize: '60px 60px' }} />
+      <div className="absolute top-1/3 left-1/4 w-96 h-96 rounded-full bg-purple-600/10 blur-[150px] pointer-events-none -z-10" />
+      <div className="absolute bottom-1/3 right-1/4 w-96 h-96 rounded-full bg-pink-600/5 blur-[150px] pointer-events-none -z-10" />
+
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
         
-        {/* Header Section */}
+        {/* --- Header --- */}
         <div className="flex flex-col items-center mb-16 text-center">
-          <div className="flex items-center gap-4 mb-4">
-             <span className="w-12 h-[2px] bg-[#72b2f3]"></span>
+          <motion.div initial={{ opacity: 0, y: -20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex items-center gap-4 mb-4">
+             <span className="w-12 h-[3px] bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></span>
              <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight uppercase">
-                ผลงาน <span className="text-[#72b2f3]">ของเรา</span>
+                OUR <span className="bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">PORTFOLIO</span>
              </h2>
-          </div>
-          <p className="text-gray-400 text-lg">รวบรวมผลงานการพัฒนาซอฟต์แวร์และการออกแบบเว็บไซต์</p>
+          </motion.div>
+          <p className="text-slate-400 text-lg font-light max-w-2xl">A curated showcase of software development and UI/UX design crafted with modern futuristic aesthetics.</p>
         </div>
 
-        {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-4 mb-20">
-          {categories.map((cat) => (
-            <button
+        {/* --- Filters --- */}
+        <div className="flex flex-wrap justify-center gap-3 mb-24">
+          {categories.map((cat, idx) => (
+            <motion.button
               key={cat.name}
-              onClick={() => setFilter(cat.name)}
-              className={`flex items-center gap-2 px-8 py-3 rounded-full text-sm font-bold transition-all duration-500 border-2 ${
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.05 }}
+              onClick={() => handleFilterChange(cat.name)}
+              className={`flex items-center gap-2.5 px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 border ${
                 filter === cat.name 
-                ? "bg-[#72b2f3] text-[#0f2136] border-[#72b2f3] shadow-[0_0_20px_rgba(114,178,243,0.4)] scale-105" 
-                : "bg-transparent text-gray-400 border-gray-700 hover:border-[#72b2f3] hover:text-[#72b2f3]"
+                ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white border-transparent shadow-lg shadow-purple-500/20 scale-105" 
+                : "bg-[#120720]/80 text-slate-400 border-purple-950 hover:border-purple-500/40 hover:bg-[#1a0c2e] hover:text-white"
               }`}
             >
-              {cat.icon}
+              <span className={filter === cat.name ? "text-white" : "text-purple-400"}>{cat.icon}</span>
               {cat.name}
-            </button>
+            </motion.button>
           ))}
         </div>
 
-        {/* Project Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {filteredProjects.map((project, index) => (
-            <div 
-              key={index} 
-              className="group relative bg-[#162a41]/50 rounded-[2.5rem] border border-white/5 overflow-hidden hover:border-[#72b2f3]/30 transition-all duration-500 flex flex-col h-full backdrop-blur-sm"
-            >
-              {/* Project Image Container */}
-              <div className="relative h-64 overflow-hidden">
-                <img 
-                  src={project.image} 
-                  alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  onError={(e) => { e.currentTarget.src = 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1000&auto=format&fit=crop'; }}
-                />
-                {/* Image Overlay */}
-                <div className="absolute inset-0 bg-[#0f2136]/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-6">
-                  {project.github && (
-                    <a 
-                      href={project.github} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="p-4 bg-white/10 backdrop-blur-md rounded-full text-white hover:bg-[#72b2f3] hover:text-[#0f2136] transition-all transform hover:-translate-y-1"
-                    >
-                      <Github size={24} />
-                    </a>
-                  )}
-                  {project.demo && (
-                    <a 
-                      href={project.demo} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="p-4 bg-white/10 backdrop-blur-md rounded-full text-white hover:bg-[#72b2f3] hover:text-[#0f2136] transition-all transform hover:-translate-y-1"
-                      title={project.demo.includes('figma.com') ? "เปิดดู Figma Prototype" : "เยี่ยมชมเว็บไซต์"}
-                    >
-                      {/* 3. เช็คเงื่อนไข: ถ้าเป็นลิงก์ figma ให้แสดงไอคอน figma ถ้าไม่ใช่ให้แสดงไอคอนลิงก์ภายนอกปกติ */}
-                      {project.demo.includes('figma.com') ? <Figma size={24} /> : <ExternalLink size={24} />}
-                    </a>
-                  )}
-                </div>
-              </div>
+        {/* --- Project List --- */}
+        <div className="flex flex-col gap-28">
+          <AnimatePresence mode="popLayout">
+            {displayedProjects.map((project, index) => {
+              const isEven = index % 2 === 0;
+              const hasLink = !!project.demo;
 
-              {/* Project Content */}
-              <div className="p-8 flex flex-col flex-1">
-                <div className="flex justify-between items-start mb-4">
-                   <span className="text-[10px] font-bold text-[#72b2f3] uppercase tracking-[0.2em] bg-[#72b2f3]/10 px-4 py-1.5 rounded-full border border-[#72b2f3]/20">
-                    {project.category}
-                  </span>
-                </div>
-                
-                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-[#72b2f3] transition-colors leading-tight">
-                  {project.title}
-                </h3>
-                
-                <p className="text-gray-400 text-sm leading-relaxed mb-8 flex-1 font-light">
-                  {project.description}
-                </p>
+              return (
+                <motion.div 
+                  key={project.id}
+                  layout
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                  className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-12 lg:gap-16 w-full relative`}
+                >
+                  <div className="w-full lg:w-1/2 z-20">
+                    <div className="flex items-center gap-2.5 mb-3">
+                      <span className="text-purple-400 text-xs font-bold uppercase tracking-[0.2em]">{project.category}</span>
+                      <span className="text-slate-600 text-xs">•</span>
+                      <span className={`text-[10px] font-extrabold uppercase px-2 py-0.5 rounded border ${project.type === "Full-Time" ? "text-cyan-400 border-cyan-500/30 bg-cyan-950/20" : "text-amber-400 border-amber-500/30 bg-amber-950/20"}`}>{project.type}</span>
+                    </div>
 
-                {/* Tech Stack Pills */}
-                <div className="flex flex-wrap gap-2 pt-6 border-t border-white/5">
-                  {project.tools.map((tool, tIndex) => (
-                    <span 
-                      key={tIndex} 
-                      className="px-3 py-1 bg-[#0f2136] text-[#72b2f3] text-[10px] font-black rounded-lg uppercase border border-[#72b2f3]/20 shadow-inner"
-                    >
-                      {tool}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          ))}
+                    <h3 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-wide leading-tight">{project.title}</h3>
+                    
+                    <div className="bg-[#150a21]/60 border border-white/10 backdrop-blur-xl p-8 rounded-2xl shadow-2xl relative mb-6">
+                      <p className="text-slate-300 text-base leading-relaxed font-light">{project.description}</p>
+                      <div className="flex flex-wrap gap-2 mt-6 pt-5 border-t border-white/5">
+                        {project.tools.map((tool, tIndex) => (
+                          <span key={tIndex} className="px-3 py-1 bg-purple-950/40 text-purple-300 text-xs font-medium rounded-md border border-purple-900/30">{tool}</span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-4 pl-2">
+                      {hasLink && (
+                        <a href={project.demo} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-semibold text-sm rounded-xl shadow-lg transition-all duration-300 transform hover:-translate-y-0.5">
+                          {project.demo.includes('figma.com') ? <Figma size={16} /> : <ExternalLink size={16} />} Live Demo
+                        </a>
+                      )}
+                      
+                      {/* เปลี่ยนปุ่ม Details เป็น Link นำทางไปยังโฟลเดอร์แบบไดนามิก */}
+                      <Link href={`/project/${project.id}`} className="inline-flex items-center gap-2 px-6 py-2.5 bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 font-semibold text-sm rounded-xl transition-all duration-300 hover:-translate-y-0.5">
+                        <Info size={16} className="text-purple-400" /> Details
+                      </Link>
+                    </div>
+                  </div>
+
+                  <div className="w-full lg:w-1/2 relative group">
+                    <div className="absolute -inset-1.5 bg-gradient-to-r from-purple-600 to-pink-600 rounded-[2rem] blur opacity-20 group-hover:opacity-30 transition duration-1000"></div>
+                    <div className="relative aspect-[16/10] w-full rounded-[2rem] overflow-hidden border border-white/10 bg-[#12071f] shadow-2xl">
+                      <img src={project.image} alt={project.title} className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.02]" onError={(e) => { e.currentTarget.src = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop'; }} />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#08020f]/40 via-transparent to-transparent pointer-events-none" />
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
         </div>
 
-        {/* Empty State */}
+        {/* --- Empty State --- */}
         {filteredProjects.length === 0 && (
-          <div className="text-center py-20 text-gray-500">
-             <p className="text-xl">ยังไม่มีรายการผลงานในหมวดหมู่นี้</p>
-          </div>
+          <div className="text-center py-20 text-slate-500"><p className="text-lg font-light">No projects found in this category.</p></div>
         )}
 
+        {/* --- Toggle View Button --- */}
+        {filteredProjects.length > 3 && (
+          <div className="flex justify-center mt-24">
+            <button onClick={() => { setShowAll(!showAll); if(showAll) window.scrollTo({ top: window.scrollY - 800, behavior: 'smooth' }); }} className={`flex items-center gap-2 px-8 py-3.5 text-sm font-bold rounded-full border transition-all duration-300 shadow-xl group ${showAll ? 'bg-gradient-to-b from-[#2a0e44] to-[#140624] text-pink-300 border-pink-500/30' : 'bg-gradient-to-b from-[#1c0c32] to-[#110620] text-purple-300 border-purple-500/30'}`}>
+              {showAll ? 'Show Less' : 'View More Works'}
+              {showAll ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

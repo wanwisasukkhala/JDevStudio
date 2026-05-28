@@ -14,7 +14,7 @@ export default function LoadingScreen() {
       </div>
       {/* เพิ่มข้อความเท่ๆ ด้านล่างเจ้าแมวได้นะครับ */}
       <p className="mt-4 text-gray-500 animate-pulse font-medium">
-        กำลังโหลดข้อมูล...
+        Downloading...
       </p>
     </div>
   );
