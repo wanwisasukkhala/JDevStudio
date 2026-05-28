@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import LoadingScreen from "@/components/LoadingScreen";
 import Navbar from "@/components/Navbar";
-import ScrollToTop from "@/components/ScrollToTop";
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
@@ -25,7 +24,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
       <div className="min-h-screen bg-gray-50">
         {children}
       </div>
-      <ScrollToTop />
+   
     </>
   );
 }
