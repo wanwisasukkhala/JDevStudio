@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Prompt } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "@/components/ClientLayout"; // import ตัวที่เราสร้างตะกี้
+import { Analytics } from '@vercel/analytics/react';
 
 const prompt = Prompt({
   subsets: ["thai", "latin"],
@@ -11,9 +12,16 @@ const prompt = Prompt({
 
 export const metadata: Metadata = {
   title: "Wanwisa.skl",
-  description: "พอร์ตโฟลิโอ Full-stack Developer โดย วันวิสา สุขคะละ",
+  description: "Profile wanwisa.skl",
   icons: {
-    icon: "/Image/icon/icons8-code-94.png",
+    icon: [
+      { url: "/Image/icon/icons8-code-94.png" }, // ไอคอนหลักสำหรับ Browser ทั่วไป
+      { url: "/Image/icon/icons8-code-94.png", sizes: "94x94", type: "image/png" } // ระบุขนาดและประเภทให้ชัดเจน
+    ],
+    // เผื่อไว้สำหรับเวลาคนแชร์ลิงก์หรือเซฟหน้าเว็บลงบน iPhone/iPad (Apple Touch Icon)
+    apple: [
+      { url: "/Image/icon/icons8-code-94.png", sizes: "94x94", type: "image/png" }
+    ]
   },
 };
 
@@ -29,6 +37,7 @@ export default function RootLayout({
         <ClientLayout>
           {children}
         </ClientLayout>
+        <Analytics />
       </body>
     </html>
   );
