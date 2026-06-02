@@ -70,7 +70,6 @@ export default function Portfolio() {
             </motion.button>
           ))}
         </div>
-
         {/* --- Project List --- */}
         <div className="flex flex-col gap-28">
           <AnimatePresence mode="popLayout">

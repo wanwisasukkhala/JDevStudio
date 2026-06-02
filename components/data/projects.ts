@@ -77,6 +77,26 @@ export const projects: Project[] = [
       "Delivered comprehensive data documentation and reporting for stakeholder review."
     ]
   },
+    {
+    id: "atomic-energy-prototype",
+    title: "UI/UX Design & Prototyping for an Online Bicycle Sales Website",
+    category: "UI/UX",
+    type: "Freelance",
+    image: "/Image/bicyle.png",
+    images: [
+      "/Image/b1.png",
+      "/Image/b2.png",
+      "/Image/b3.png"
+    ],
+    description: "This course provides training in UI/UX design and prototyping for an online bicycle sales website, focusing on user-friendliness and responsive design for the online bicycle market.",
+    tools: ["Next.js", "Tailwind CSS"],
+    github: null,
+    demo: "https://bicylefriend.vercel.app/",
+    responsibilities: "UI/UX design and prototyping for an e-commerce bicycle website using Next.js and Tailwind CSS, focusing on user-friendliness and market responsiveness.  ",
+    deliverables: [
+      "UI/UX Prototype Design for a Government Project Proposal [Unawarded / Pitching Phase]",
+    ]
+  },
   {
     id: "atomic-energy-prototype",
     title: "Concept UI/UX Design & Prototyping for an OAP Project Proposal",
